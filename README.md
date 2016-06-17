@@ -18,6 +18,7 @@ The table shows the frameworks and other components used to set up the pilot.
 |FCD Kafka Producer|Dockerized version of [pilot-sc4-kafka-producer](https://github.com/big-data-europe/pilot-sc4-kafka-producer) (TBD)|
 |Apache Flink|[bde2020/flink-master](https://hub.docker.com/r/bde2020/docker-kafka/) <br> [bde2020/flink-worker](https://hub.docker.com/r/bde2020/flink-worker/) <br> [bde2020/flink-submit](https://hub.docker.com/r/bde2020/flink-worker/)|
 |Elasticsearch|NA|
+|Postgis|[bde2020/postgis](https://hub.docker.com/r/bde2020/postgis/)|
 |Rserve + MapMatching Algorithm|Dockerfile in [pilot-sc4-docker-r](https://github.com/big-data-europe/pilot-sc4-docker-r)|
 |FCD Flink Job|Dockerized version of [pilot-sc4-flink-kafka-consumer](https://github.com/big-data-europe/pilot-sc4-flink-kafka-consumer) (TBD)|
 |Kibana|NA|
