@@ -11,10 +11,9 @@
 <http://www.big-data-europe.eu/data/workflows/575C26642B8AAC0007000001>	ns2:uuid	"575C26642B8AAC0007000001" .
 <http://www.big-data-europe.eu/data/workflows/575C26642B8AAC0007000001>	ns3:title	"SC4 Pilot Start up " ;
 	ns3:description	"This pipeline defines the initialization steps for the SC4 pilot" ;
-	ns1:hasStep	<http://www.big-data-europe.eu/data/steps/575C28872B8AAC0007000005> ,
-		<http://www.big-data-europe.eu/data/steps/575C27E92B8AAC0007000004> ,
-		<http://www.big-data-europe.eu/data/steps/575C26B52B8AAC0007000002> ,
-		<http://www.big-data-europe.eu/data/steps/575C278D2B8AAC0007000003> .
+	ns1:hasStep	<http://www.big-data-europe.eu/data/steps/575C28872B8AAC0007000002> ,
+		<http://www.big-data-europe.eu/data/steps/575C27E92B8AAC0007000003> ,
+		<http://www.big-data-europe.eu/data/steps/575C26B52B8AAC0007000004> .
 
 #-----------------------------------------------------------------------------------------------------
 #                                   Step 1. Start Zookeeper
@@ -40,23 +39,11 @@
 	ns4:status	"not_started" .
 
 #-----------------------------------------------------------------------------------------------------
-#                                   Step 3. Create a Kafka topic
+#                                   Step 3. Start the FCD Kafka producer
 #-----------------------------------------------------------------------------------------------------
 
-<http://www.big-data-europe.eu/data/steps/575C27E92B8AAC0007000004>	rdf:type	ns1:Step ;
-	ns2:uuid	"575C27E92B8AAC0007000004" ;
-	ns3:title	"Create a Kafka topic" ;
-	ns3:description	"Creates a Kafka topic to which the broker will forward the messages from producers." ;
-	ns4:code	"create_kafka_topic" ;
-	ns4:order	2 ;
-	ns4:status	"not_started" .
-
-#-----------------------------------------------------------------------------------------------------
-#                                   Step 4. Start the FCD Kafka producer
-#-----------------------------------------------------------------------------------------------------
-
-<http://www.big-data-europe.eu/data/steps/575C28872B8AAC0007000005>	rdf:type	ns1:Step ;
-	ns2:uuid	"575C28872B8AAC0007000005" ;
+<http://www.big-data-europe.eu/data/steps/575C28872B8AAC0007000004>	rdf:type	ns1:Step ;
+	ns2:uuid	"575C28872B8AAC0007000004" ;
 	ns3:title	"Start the FCD Kafka producer" ;
 	ns3:description	"Starts the Kafka producer that fetches the data from the FCD web service and send it to a Kafka topic through a Kafka broker " ;
 	ns4:code	"start_fcd_kafka_producer" ;
