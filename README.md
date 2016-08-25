@@ -20,7 +20,6 @@ The table shows the frameworks and other components used to set up the pilot.
 |Elasticsearch|NA|
 |Postgis|[bde2020/postgis](https://hub.docker.com/r/bde2020/postgis/)|
 |Rserve + MapMatching Algorithm|Dockerfile in [pilot-sc4-docker-r](https://github.com/big-data-europe/pilot-sc4-docker-r)|
-|FCD Flink Job|Dockerized version of [pilot-sc4-flink-kafka-consumer](https://github.com/big-data-europe/pilot-sc4-flink-kafka-consumer) (TBD)|
 |Kibana|NA|
 
 All the components, frameworks, Flink job, Kafka producer, Rserve, must be provided as Docker images in order to be 
