@@ -1,14 +1,14 @@
-# BDE SC4 Pilot Pipeline
+# BDE SC4 Pilot 1 Pipeline
 
-Bootstrap the pipeline for the SC4 pilot on the BDE platform.
+Bootstrap the pipeline for the SC4 pilot 1 on the BDE platform.
 
-## Pilot Description
+## Pilot 1 Description
 The pilot fetches continuously the FCD data (Floating Car Data)  about taxies in Thessaloniki from CERTH web service. 
 A Kafka Producer connects to the web service and sends the data into a Kafka topic. The data is consumed by a Flink job, 
 enriched using a map matching algorithm, aggregated and finally stored into Elasticsearch. A visualization based on 
 Kibana is used to visualize the aggregated data in a map (average speed in road segments per time windows).
   
-## Pilot Components
+## Pilot 1 Components
 The table shows the frameworks and other components used to set up the pilot.
 
 |Component | Images |
@@ -18,7 +18,6 @@ The table shows the frameworks and other components used to set up the pilot.
 |FCD Kafka Producer|Dockerized version of [pilot-sc4-kafka-producer](https://github.com/big-data-europe/pilot-sc4-kafka-producer) (TBD)|
 |Apache Flink|[bde2020/flink-master](https://hub.docker.com/r/bde2020/docker-kafka/) <br> [bde2020/flink-worker](https://hub.docker.com/r/bde2020/flink-worker/) <br> [bde2020/flink-submit](https://hub.docker.com/r/bde2020/flink-worker/)|
 |Elasticsearch|NA|
-|Postgis|[bde2020/postgis](https://hub.docker.com/r/bde2020/postgis/)|
 |Rserve + MapMatching Algorithm|Dockerfile in [pilot-sc4-docker-r](https://github.com/big-data-europe/pilot-sc4-docker-r)|
 |Kibana|NA|
 
@@ -27,7 +26,7 @@ started in Docker containers within a Docker Swarm. Furthermore, all the Docker 
 protocol by including the wait-for-step.sh, execute-step.sh, finish-step.sh scripts provided in the [docker-spark](https://github.com/big-data-europe/docker-spark/tree/master/base) base 
 image in order to communicate with the initialization daemon.
  
-## Pilot Initialization
+## Pilot 1 Initialization
 Some of the components used for the pilot depend on other components. As an example, the Kafka producer depends on 
 the availability of a Kafka topic, the Flink job depends on the availability of the Rserve for the map matching and 
 on Elasticsearch for the storage. Kafka itself depends on Zookeeper. The BDE platform provides a component, the 
