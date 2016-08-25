@@ -47,7 +47,7 @@ The steps to start the pilot are
 5. Set up Flink 
 6. Start Rserve with the MapMatching algorithm
 7. Set up Elasticsearch with the FCD schema
-8. Start the FCD Flink job
+8. Submit the FCD job to Flink
 9. Start Kibana  
 
 ## Configuration of the Dashboards Integrator UI
