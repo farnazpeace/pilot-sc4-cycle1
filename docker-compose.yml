@@ -3,7 +3,8 @@ services:
   ###
   # Add your pipeline here
   ###
-
+  zookeeper:
+    image: bde2020/zookeeper
   ###
   # mu.semte.ch stack
   ###
