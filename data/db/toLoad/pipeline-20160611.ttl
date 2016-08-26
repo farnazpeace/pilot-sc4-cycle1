@@ -23,7 +23,7 @@
 	ns2:uuid	"575C26B52B8AAC0007000002" ;
 	ns3:title	"Start Zookeeper" ;
 	ns3:description	"Kafka requires Zookeeper" ;
-        ns4:code	"start_zookeeper" ;
+        ns4:code	"zookeeper" ;
 	ns4:order	0 ;
 	ns4:status	"not_started" .
 
@@ -34,7 +34,7 @@
 	ns2:uuid	"575C278D2B8AAC0007000003" ;
 	ns3:title	"Start a Kafka broker" ;
 	ns3:description	"Start a Kafka broker that will receive messages from producers and will forward them to the appropriate topic." ;
-	ns4:code	"start_kafka_broker" ;
+	ns4:code	"kafka" ;
 	ns4:order	1 ;
 	ns4:status	"not_started" .
 
@@ -46,6 +46,6 @@
 	ns2:uuid	"575C28872B8AAC0007000004" ;
 	ns3:title	"Start the FCD Kafka producer" ;
 	ns3:description	"Starts the Kafka producer that fetches the data from the FCD web service and send it to a Kafka topic through a Kafka broker " ;
-	ns4:code	"start_fcd_kafka_producer" ;
+	ns4:code	"fcd_kafka_producer" ;
 	ns4:order	3 ;
 	ns4:status	"not_started" .
