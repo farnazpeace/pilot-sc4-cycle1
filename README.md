@@ -13,7 +13,7 @@ The table shows the frameworks and other components used to set up the pilot.
 
 |Component | Images |
 |----------|--------|
-|Apache Zookeeper|[mesoscloud/zookeeper](https://hub.docker.com/r/mesoscloud/zookeeper/)|
+|Apache Zookeeper|[bde2020/zookeeper](https://hub.docker.com/r/bde2020/zookeeper/)|
 |Apache Kafka|[bde2020/docker-kafka](https://hub.docker.com/r/bde2020/docker-kafka/)|
 |FCD Kafka Producer|Dockerized version of [pilot-sc4-kafka-producer](https://github.com/big-data-europe/pilot-sc4-kafka-producer) (TBD)|
 |Apache Flink|[bde2020/flink-master](https://hub.docker.com/r/bde2020/docker-kafka/) <br> [bde2020/flink-worker](https://hub.docker.com/r/bde2020/flink-worker/) <br> [bde2020/flink-submit](https://hub.docker.com/r/bde2020/flink-worker/)|
