@@ -39,14 +39,21 @@ RDF file must be included in the project as it will be imported by the initializ
 The steps to start the pilot are 
 
 1. Start Zookeeper
-2. Set up Kafka (broker)
-3. Create a Kafka topic
-4. Start the FCD Kafka producer
-5. Set up Flink 
-6. Start Rserve with the MapMatching algorithm
-7. Set up Elasticsearch with the FCD schema
-8. Submit the [FCD job](https://github.com/big-data-europe/pilot-sc4-flink-kafka-consumer) to Flink
-9. Start Kibana  
+2. Set up Kafka and create a topic
+3. Start the FCD Kafka producer
+4. Set up Flink 
+5. Start Rserve with the MapMatching algorithm
+6. Set up Elasticsearch with the FCD schema
+7. Submit the [FCD job](https://github.com/big-data-europe/pilot-sc4-flink-kafka-consumer) to Flink
+8. Start Kibana  
+
+### 1) Start Zookeeper
+The pilot uses a customized Zookeeper image in order to use its own configuration file. The image uses the bde2020/zookeeper
+image as a base. Use the Docker file in images/zookeeper to build the Zookeeper image used by the pilot.
+ 
+### 2) Set up Kafka
+
+### 3) Start the FCD Kafka Producer
 
 ## Configuration of the Dashboards Integrator UI
 The Integrator UI shows all the existing component dashboards in a unified interface. For each dashboard a menu item is 
