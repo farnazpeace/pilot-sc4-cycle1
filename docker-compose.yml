@@ -4,7 +4,7 @@ services:
   # Add your pipeline here
   ###
   zookeeper:
-    image: bde2020/zookeeper
+    build: images/zookeeper/ 
   ###
   # mu.semte.ch stack
   ###
