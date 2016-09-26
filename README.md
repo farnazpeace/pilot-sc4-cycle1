@@ -1,4 +1,4 @@
-# BDE SC4 Pilot 1 Pipeline
+# BDE SC4 Pilot Cycle 1
 
 Bootstrap the pipeline for the SC4 pilot 1 on the BDE platform.
 
