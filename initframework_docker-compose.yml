@@ -3,38 +3,98 @@ services:
   ###
   # Add your pipeline here
   ###
-  zookeeper:
-    build: images/zookeeper/ 
+    zookeeper:
+        build:
+            context: images/sc4-zookeeper
+        image: sc4-zookeeper
+        environment:
+            - INIT_DAEMON_STEP=zookeeper
+            - MYID=1
+            - DELAY=0
+        ports:
+            - 2181:2181
+    kafka-broker:
+        build:
+            context: images/sc4-kafka-broker
+        image: sc4-kafka-broker
+        environment:
+            - INIT_DAEMON_STEP=kafka-broker
+            - TOPICS=taxi,testtopic
+            - ZOOKEEPER_SERVERS=zookeeper:2181
+        links:
+            - zookeeper
+        ports:
+            - 9092:9092
+    kafka-maketopic:
+        build:
+            context: images/sc4-kafka-maketopic
+        image: sc4-kafka-maketopic
+        environment:
+            - INIT_DAEMON_STEP=kafka-maketopic
+            - ZOOKEEPER_SERVERS=zookeeper:2181
+            - KAFKA_BROKER=kafka-broker:9092
+        links:
+            - kafka-broker
+    kafka-cli-producer:
+        build:
+            context: images/sc4-kafka-cli-producer
+        image: sc4-kafka-producer
+        environment:
+            - INIT_DAEMON_STEP=kafka-cli-producer
+            - ZOOKEEPER_SERVERS=zookeeper:2181
+            - KAFKA_BROKER_LIST=kafka-broker:9092
+        links:
+            - kafka-broker
+    kafka-cli-consumer:
+        build:
+            context: images/sc4-kafka-cli-consumer
+        image: sc4-kafka-consumer
+        environment:
+            - INIT_DAEMON_STEP=kafka-cli-consumer
+            - ZOOKEEPER_SERVERS=zookeeper:2181
+        links:
+            - kafka-broker
+    pilot-sc4-fcd-producer:
+#       image: datiaperti/pilot-sc4-fcd-producer:v0.0.1
+        image: ksylla/pilot-sc4-fcd-producer:latest
+        environment:
+            - INIT_DAEMON_STEP=pilot-sc4-fcd-producer
+            - ZOOKEEPER_SERVERS=zookeeper:2181
+        links:
+            - kafka-broker:kafkahost
+
   ###
   # mu.semte.ch stack
   ###
-  integratorui:
-    image: bde2020/integrator-ui:latest
-    volumes:
-      - ./config/integrator:/app/config
-    environment:
-      VIRTUAL_HOST: example.big-data-europe.eu
-  monitor:
-    image: bde2020/pipeline-monitor-frontend:0.1.0
-    links:
-      - identifier:backend
-    environment:
-      VIRTUAL_HOST: monitor.example.big-data-europe.eu
-  identifier:
-    image: semtech/mu-identifier:1.0.0
-  dispatcher:
-    image: semtech/mu-dispatcher:1.0.1
-    volumes:
-      - ./config:/config
-  database:
-    image: tenforce/virtuoso:1.0.0-virtuoso7.2.2
-    environment:
-      SPARQL_UPDATE: "true"
-    ports:
-      - "8890:8890"
-    volumes:
-      - ./data/db:/data
-  pipeline:
-    image: bde2020/mu-pipeline-service:0.1.0
-  initdaemon:
-    image: bde2020/mu-init-daemon-service:0.1.0
+    integratorui:
+        image: bde2020/integrator-ui:latest
+        volumes:
+            - ./config/integrator:/app/config
+        environment:
+            VIRTUAL_HOST: example.big-data-europe.eu
+    monitor:
+        image: bde2020/pipeline-monitor-frontend:0.1.0
+        links:
+            - identifier:backend
+        environment:
+            VIRTUAL_HOST: monitor.example.big-data-europe.eu
+        ports:
+            - 80:80
+    identifier:
+        image: semtech/mu-identifier:1.0.0
+    dispatcher:
+        image: semtech/mu-dispatcher:1.0.1
+        volumes:
+            - ./config:/config
+    database:
+        image: tenforce/virtuoso:1.0.0-virtuoso7.2.2
+        environment:
+            SPARQL_UPDATE: "true"
+        ports:
+            - "8890:8890"
+        volumes:
+            - ./data/db:/data
+    pipeline:
+        image: bde2020/mu-pipeline-service:0.1.0
+    initdaemon:
+        image: bde2020/mu-init-daemon-service:0.1.0

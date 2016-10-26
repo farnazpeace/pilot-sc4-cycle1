@@ -1,0 +1,57 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://purl.org/spar/pwo/> .
+<http://www.big-data-europe.eu/data/workflows/581101226A9D6E0009000001>	rdf:type	ns1:Workflow .
+@prefix ns2:	<http://mu.semte.ch/vocabularies/core/> .
+<http://www.big-data-europe.eu/data/workflows/581101226A9D6E0009000001>	ns2:uuid	"581101226A9D6E0009000001" .
+@prefix ns3:	<http://purl.org/dc/terms/> .
+<http://www.big-data-europe.eu/data/workflows/581101226A9D6E0009000001>	ns3:title	"pilot-sc4-cycle1_workflow" ;
+	ns3:description	"The show case 4 - cycle 1 - prototype of analyses Floating Car Data (FCD) of the Tessaloniki taxi fleet.\\nThe workflow is constructed according to the dependencies as expressed in the docker-compose file of the application." ;
+	ns1:hasStep	<http://www.big-data-europe.eu/data/steps/581104F06A9D6E0009000006> ,
+		<http://www.big-data-europe.eu/data/steps/581105716A9D6E0009000007> ,
+		<http://www.big-data-europe.eu/data/steps/581102036A9D6E0009000002> ,
+		<http://www.big-data-europe.eu/data/steps/581103626A9D6E0009000004> ,
+		<http://www.big-data-europe.eu/data/steps/581103F36A9D6E0009000005> ,
+		<http://www.big-data-europe.eu/data/steps/581102756A9D6E0009000003> .
+<http://www.big-data-europe.eu/data/steps/581102036A9D6E0009000002>	rdf:type	ns1:Step ;
+	ns2:uuid	"581102036A9D6E0009000002" ;
+	ns3:title	"Zookeeper" ;
+	ns3:description	"install an ensemble of ZooKeeper servers" .
+@prefix ns4:	<http://www.big-data-europe.eu/vocabularies/pipeline/> .
+<http://www.big-data-europe.eu/data/steps/581102036A9D6E0009000002>	ns4:code	"zookeeper" ;
+	ns4:order	0 ;
+	ns4:status	"not_started" .
+<http://www.big-data-europe.eu/data/steps/581102756A9D6E0009000003>	rdf:type	ns1:Step ;
+	ns2:uuid	"581102756A9D6E0009000003" ;
+	ns3:title	"Kafka broker" ;
+	ns3:description	"create and startup a Kafka broker" ;
+	ns4:code	"kafka-broker" ;
+	ns4:order	1 ;
+	ns4:status	"not_started" .
+<http://www.big-data-europe.eu/data/steps/581103626A9D6E0009000004>	rdf:type	ns1:Step ;
+	ns2:uuid	"581103626A9D6E0009000004" ;
+	ns3:title	"Make Kafka topics" ;
+	ns3:description	"ensure that the required kafka topics are define at the kafka-broker" ;
+	ns4:code	"kafka-maketopic" ;
+	ns4:order	2 ;
+	ns4:status	"not_started" .
+<http://www.big-data-europe.eu/data/steps/581103F36A9D6E0009000005>	rdf:type	ns1:Step ;
+	ns2:uuid	"581103F36A9D6E0009000005" ;
+	ns3:title	"Kafka command line producer" ;
+	ns3:description	"Run a producer that sends a line to the topic \"taxi\" and then finishes" ;
+	ns4:code	"kafka-cli-producer" ;
+	ns4:order	3 ;
+	ns4:status	"not_started" .
+<http://www.big-data-europe.eu/data/steps/581104F06A9D6E0009000006>	rdf:type	ns1:Step ;
+	ns2:uuid	"581104F06A9D6E0009000006" ;
+	ns3:title	"Kafka command line consumer" ;
+	ns3:description	"The Kafka command line consumer receives messages from the topic \"taxi\" and prints them to stdout. The first line receive must be the single line sent by the Kafka command line producer. Then more messages are awaited and print on receipt" ;
+	ns4:code	"kafka-cli-consumer" ;
+	ns4:order	4 ;
+	ns4:status	"not_started" .
+<http://www.big-data-europe.eu/data/steps/581105716A9D6E0009000007>	rdf:type	ns1:Step ;
+	ns2:uuid	"581105716A9D6E0009000007" ;
+	ns3:title	"FCD Producer" ;
+	ns3:description	"every minute  request FCD data from CERTH server and send them to the Kafka topic \"taxi\"" ;
+	ns4:code	"pilot-sc4-fcd-producer" ;
+	ns4:order	5 ;
+	ns4:status	"not_started" .

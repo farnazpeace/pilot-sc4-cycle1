@@ -32,20 +32,20 @@
 #-----------------------------------------------------------------------------------------------------
 <http://www.big-data-europe.eu/data/steps/575C278D2B8AAC0007000003>	rdf:type	ns1:Step ;
 	ns2:uuid	"575C278D2B8AAC0007000003" ;
-	ns3:title	"Kafka" ;
+	ns3:title	"Kafka broker" ;
 	ns3:description	"Starts a Kafka broker and create the taxi topic." ;
-	ns4:code	"kafka" ;
+	ns4:code	"kafka-broker" ;
 	ns4:order	1 ;
 	ns4:status	"not_started" .
 
 #-----------------------------------------------------------------------------------------------------
-#                                   Step 3. Start the FCD Kafka producer
+#                                   Step 3. Make Kafka Topics
 #-----------------------------------------------------------------------------------------------------
 
 <http://www.big-data-europe.eu/data/steps/575C28872B8AAC0007000004>	rdf:type	ns1:Step ;
 	ns2:uuid	"575C28872B8AAC0007000004" ;
-	ns3:title	"FCD Kafka Producer" ;
-	ns3:description	"Starts the Kafka producer that fetches the data from the FCD web service and send it to a Kafka topic." ;
-	ns4:code	"fcd-kafka-producer" ;
-	ns4:order	3 ;
+	ns3:title	"Make Kafka Topics" ;
+	ns3:description	"ensure that the required kafka topics are define at the kafka-broker" ;
+	ns4:code	"kafka-maketopic" ;
+	ns4:order	2 ;
 	ns4:status	"not_started" .

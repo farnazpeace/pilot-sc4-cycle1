@@ -48,7 +48,8 @@ services:
         links:
             - kafka-broker
     pilot-sc4-fcd-producer:
-        image: datiaperti/pilot-sc4-fcd-producer:v0.0.1
+#       image: datiaperti/pilot-sc4-fcd-producer:v0.0.1
+        image: ksylla/pilot-sc4-fcd-producer:latest
         environment:
             - ZOOKEEPER_SERVERS=zookeeper:2181
         links:

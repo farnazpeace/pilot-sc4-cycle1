@@ -1,0 +1,5 @@
+dumps
+http*.log
+virtuoso.*
+virtuoso-*
+clean-logs.sh
