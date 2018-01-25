@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y apt-utils vim
 RUN apt-get update && apt-get install -y supervisor dnsutils
 
 # Download-site and versions to be used
-ENV ZK_VERSION zookeeper-3.4.8
+ENV ZK_VERSION zookeeper-3.4.10
 
 # Download distribution
 RUN wget -q http://ftp.halifax.rwth-aachen.de/apache/zookeeper/"$ZK_VERSION"/"$ZK_VERSION".tar.gz -O /tmp/"$ZK_VERSION".tar.gz \
